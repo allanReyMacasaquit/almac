@@ -1,6 +1,8 @@
 <script>
+  export let items;
+
   let isEditing = false;
-  let value = "";
+  let value = items;
 </script>
 
 {#if isEditing}

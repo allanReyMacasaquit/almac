@@ -6,7 +6,7 @@
 
 <div class="flex-it p-2 bg-slate-200 mb-2 cursor-pointer">
   <div class="flex-it">
-    <Editable>
+    <Editable {items}>
       <div class="flex-it flex-row">
         <div class="flex flex-1">{items}</div>
         <div class="flex items-end hover:text-red-600">
