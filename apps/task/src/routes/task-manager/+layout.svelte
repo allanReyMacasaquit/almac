@@ -1,5 +1,3 @@
-
-<div class="text-white p-4 bg-slate-400">
-    I am a task manager layout
-    <slot/>
+<div class="flex-it p-6 md:p-10 h-full overflow-hidden">
+	<slot />
 </div>
