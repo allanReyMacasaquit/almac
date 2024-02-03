@@ -1,7 +1,11 @@
+<script>
+	export let items = 'empty task...';
+</script>
+
 <div class="flex-it border border-solid p-2 rounded-xl bg-slate-200 mb-2 cursor-pointer">
 	<div class="flex-it">
 		<div class="flex-it flex-row">
-			<div class="flex flex-1">Task...</div>
+			<div class="flex flex-1">{items}</div>
 			<div class="flex items-end hover:text-red-600">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

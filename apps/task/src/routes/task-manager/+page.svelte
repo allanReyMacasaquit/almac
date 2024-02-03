@@ -10,7 +10,7 @@
 	<div class="flex-it h-full">
 		<div class="flex-it flex-row rounded-xl h-full">
 			<!-- TASK LIST START -->
-			<TaskList />
+			<TaskList listTitle="learn Svelte" />
 			<TaskList />
 			<TaskList />
 			<!-- TASK LIST END -->
