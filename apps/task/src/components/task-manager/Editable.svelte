@@ -1,10 +1,11 @@
 <script>
   let isEditing = false;
+  let value = "";
 </script>
 
 {#if isEditing}
   <div class="flex-it">
-    <textarea class="p-2 rounded-lg" />
+    <textarea bind:value class="p-2 rounded-lg" />
     <button on:click={() => (isEditing = false)} class="flex underline justify-end">Close </button>
   </div>
 {:else}
