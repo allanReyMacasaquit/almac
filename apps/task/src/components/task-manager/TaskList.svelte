@@ -6,7 +6,7 @@
 </script>
 
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
-  <div class="bg-slate-300 flex-it rounded-lg max-h-full">
+  <div class="bg-slate-100 flex-it rounded-lg max-h-full">
     <div class="flex-it m-3">
       <div class="flex-it flex-row">
         <div class="text-xl text-left font-bold mr-2">{listTitle}</div>
