@@ -1,5 +1,5 @@
 <script>
-  export let items = "empty task...";
+  export let items;
 </script>
 
 <div class="flex-it border border-solid p-2 rounded-lg bg-slate-50 mb-2 cursor-pointer">

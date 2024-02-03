@@ -39,11 +39,9 @@
   </button>
   <div class="flex-it h-full">
     <div class="flex-it flex-row rounded-xl h-full">
-      <!-- TASK LIST START -->
       {#each taskList as list (list.id)}
-        <TaskList listTitle={list.text} />
+        <TaskList listTitle={list.text} tasks={list.items} />
       {/each}
-      <!-- TASK LIST END -->
     </div>
   </div>
 </div>
