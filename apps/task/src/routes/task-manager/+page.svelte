@@ -1,5 +1,13 @@
 <script>
   import TaskList from "../../components/task-manager/TaskList.svelte";
+  import { taskListStore } from "../../stores/tasks.js";
+
+  let _taskList;
+
+  taskListStore.subscribe((value) => {
+    _taskList = value;
+  });
+  console.log(_taskList);
 
   const taskList = [
     {
@@ -33,6 +41,8 @@
 </script>
 
 <div class="p-10 h-full">
+  {JSON.stringify(_taskList)}
+
   <div class="text-2xl mb-6">Task Manager</div>
   <button class="text-xl mb-3 font-bold cursor-pointer hover:underline flex items-start">
     + Add List
