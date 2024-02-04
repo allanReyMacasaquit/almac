@@ -1,17 +1,8 @@
 import { writable } from "svelte/store";
+import { DEFAULT_DATA } from "../data";
 
 const createStore = () => {
-  const taskList = writable([], () => {
-    let i = 0;
-    const id = setInterval(() => {
-      taskList.update((list) => [...list, i++]);
-    }, 2000);
-
-    return () => {
-      clearInterval(id);
-    };
-  });
-
+  const taskList = writable(DEFAULT_DATA);
   return taskList;
 };
 
