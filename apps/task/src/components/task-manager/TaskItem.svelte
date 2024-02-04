@@ -3,9 +3,9 @@
 
   export let items;
 
-  const saveItems = () => {
-    alert("Items Tasks successfully created!");
-  };
+  function saveItems(event) {
+    alert(`Items Tasks successfully created!:  ${event.detail}`);
+  }
 </script>
 
 <div class="flex-it p-2 bg-slate-200 mb-2 cursor-pointer rounded-lg">
