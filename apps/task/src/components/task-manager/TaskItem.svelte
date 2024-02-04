@@ -2,11 +2,15 @@
   import Editable from "./Editable.svelte";
 
   export let items;
+
+  const saveItems = () => {
+    alert("Items Tasks successfully created!");
+  };
 </script>
 
-<div class="flex-it p-2 bg-slate-200 mb-2 cursor-pointer">
+<div class="flex-it p-2 bg-slate-200 mb-2 cursor-pointer rounded-lg">
   <div class="flex-it">
-    <Editable {items}>
+    <Editable bind:value={items} on:save={saveItems}>
       <div class="flex-it flex-row">
         <div class="flex flex-1">{items}</div>
         <div class="flex items-end hover:text-red-600">
