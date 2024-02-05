@@ -4,6 +4,7 @@
 
   export let items;
   export let listIndex;
+  export let itemsIndex;
 
   function save(event) {
     taskListStore.updateTaskItems(
@@ -15,8 +16,9 @@
     );
   }
 
-  function dragStart() {
-    console.log("dragging");
+  function dragStart(e) {
+    const data = { listIndex, itemsIndex };
+    e.dataTransfer.setData("text/plain", JSON.stringify(data));
   }
 </script>
 
