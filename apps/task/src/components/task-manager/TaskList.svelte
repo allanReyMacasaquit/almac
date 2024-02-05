@@ -6,8 +6,13 @@
   export let tasks;
   export let listIndex;
 
-  function drop() {
-    console.log("dropping item!");
+  function drop(e) {
+    const sourceJson = e.dataTransfer.getData("text/plain");
+    const sourceData = JSON.parse(sourceJson);
+
+    console.log(`Dropping to list Index: ${listIndex}`);
+    console.log(`Source from List index: ${sourceData.listIndex}`);
+    console.log(`Source items index: ${sourceData.itemsIndex}`);
   }
 </script>
 
@@ -43,8 +48,8 @@
       </div>
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
-      {#each tasks as task (task.id)}
-        <TaskItem items={task} {listIndex} />
+      {#each tasks as task, itemsIndex (task.id)}
+        <TaskItem items={task} {listIndex} {itemsIndex} />
       {/each}
     </div>
     <button on:click={taskListStore.addTaskItems(listIndex)} class="underline flex p-2">
