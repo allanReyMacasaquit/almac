@@ -10,9 +10,7 @@
     const sourceJson = e.dataTransfer.getData("text/plain");
     const sourceData = JSON.parse(sourceJson);
 
-    console.log(`Dropping to list Index: ${listIndex}`);
-    console.log(`Source from List index: ${sourceData.listIndex}`);
-    console.log(`Source items index: ${sourceData.itemsIndex}`);
+    taskListStore.moveItems(sourceData, listIndex);
   }
 </script>
 
