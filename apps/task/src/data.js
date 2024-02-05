@@ -25,23 +25,5 @@ export const DEFAULT_DATA = [
       { id: "t-8", text: "Video Editing" },
       { id: "t-9", text: "Routing" }
     ]
-  },
-  {
-    id: "l-4",
-    text: "React",
-    items: [
-      { id: "t-10", text: "Variables" },
-      { id: "t-11", text: "Components" },
-      { id: "t-12", text: "Routing" }
-    ]
-  },
-  {
-    id: "l-5",
-    text: "Dotnet 7",
-    items: [
-      { id: "t-10", text: "Variables" },
-      { id: "t-11", text: "Components" },
-      { id: "t-12", text: "Routing" }
-    ]
   }
 ];
