@@ -7,6 +7,7 @@ const createStore = () => {
 
   return {
     subscribe,
+
     addTaskItems: (itemIndex) => {
       update((list) => {
         const updatedList = [...list];

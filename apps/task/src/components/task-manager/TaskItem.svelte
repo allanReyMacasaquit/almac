@@ -20,6 +20,9 @@
   <div class="flex-it">
     <Editable bind:value={items.text} on:save={save}>
       <div class="flex-it flex-row">
+        {#if !items.text}
+          <div>new task...</div>
+        {/if}
         <div class="flex flex-1">{items.text}</div>
         <div class="flex items-end hover:text-red-600">
           <svg
