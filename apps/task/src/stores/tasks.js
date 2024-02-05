@@ -7,6 +7,21 @@ const createStore = () => {
 
   return {
     subscribe,
+    addTaskItems: (itemIndex) => {
+      update((list) => {
+        const updatedList = [...list];
+        const items = updatedList[itemIndex].items;
+        updatedList[itemIndex].items = [
+          ...items,
+          {
+            id: new Date().toISOString(),
+            text: "new task.."
+          }
+        ];
+        return updatedList;
+      });
+    },
+
     addTaskList: () => {
       update((list) => {
         return [
