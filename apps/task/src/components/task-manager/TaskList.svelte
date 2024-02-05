@@ -3,10 +3,7 @@
 
   export let listTitle;
   export let tasks;
-
-  function save(event) {
-    alert(`Update/Insert Successfully : ${event.detail} `);
-  }
+  export let listIndex;
 </script>
 
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
@@ -36,7 +33,7 @@
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
       {#each tasks as task (task.id)}
-        <TaskItem items={task.text} on:save={save} />
+        <TaskItem items={task} {listIndex} />
       {/each}
     </div>
     <button class="underline flex p-2"> + Add Task </button>

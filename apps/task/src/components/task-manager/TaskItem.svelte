@@ -2,13 +2,21 @@
   import Editable from "./Editable.svelte";
 
   export let items;
+  export let listIndex;
+
+  function save(event) {
+    alert(`
+    listIndex: ${listIndex}
+    Task ID: ${items.id}
+    Items Tasks successfully created!: ${event.detail}`);
+  }
 </script>
 
 <div class="flex-it p-2 bg-slate-200 mb-2 cursor-pointer rounded-lg">
   <div class="flex-it">
-    <Editable bind:value={items} on:save>
+    <Editable bind:value={items.text} on:save={save}>
       <div class="flex-it flex-row">
-        <div class="flex flex-1">{items}</div>
+        <div class="flex flex-1">{items.text}</div>
         <div class="flex items-end hover:text-red-600">
           <svg
             xmlns="http://www.w3.org/2000/svg"

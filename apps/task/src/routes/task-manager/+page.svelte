@@ -13,8 +13,8 @@
   </button>
   <div class="flex-it h-full">
     <div class="flex-it flex-row rounded-xl h-full">
-      {#each $taskListStore as list (list.id)}
-        <TaskList listTitle={list.text} tasks={list.items} />
+      {#each $taskListStore as list, index (list.id)}
+        <TaskList listTitle={list.text} tasks={list.items} listIndex={index} />
       {/each}
     </div>
   </div>
