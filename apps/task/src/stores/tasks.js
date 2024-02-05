@@ -3,7 +3,23 @@ import { DEFAULT_DATA } from "../data";
 
 const createStore = () => {
   const taskList = writable(DEFAULT_DATA);
-  return taskList;
+  const { subscribe } = taskList;
+
+  return {
+    subscribe,
+    updateTask: (items, listIndex) => {
+      taskList.update((list) => {
+        // Updating the taskList using Svelte's update function.
+        const taskIndex = list[listIndex].items.findIndex((item) => item.id === items.id); // Finding the index of the task with the matching id.
+
+        if (taskIndex !== -1) {
+          // Checking if the task with the given id exists in the list.
+          list[listIndex].items[taskIndex] = { ...items }; // Updating the task with the new data.
+        }
+        return list; // Returning the updated taskList.
+      });
+    }
+  };
 };
 
 export const taskListStore = createStore();

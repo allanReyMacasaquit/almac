@@ -9,8 +9,8 @@
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
   <div class="bg-slate-100 flex-it rounded-lg max-h-full">
     <div class="flex-it m-3">
-      <div class="flex-it flex-row">
-        <div class="text-xl text-left font-bold mr-2">{listTitle}</div>
+      <div class="flex justify-center flex-row">
+        <div class="text-xl font-bold mr-2">{listTitle}</div>
         <div class="flex hover:text-red-600 items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"

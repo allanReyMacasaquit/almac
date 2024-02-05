@@ -1,14 +1,18 @@
 <script>
+  import { taskListStore } from "../../stores/tasks";
   import Editable from "./Editable.svelte";
 
   export let items;
   export let listIndex;
 
   function save(event) {
-    alert(`
-    listIndex: ${listIndex}
-    Task ID: ${items.id}
-    Items Tasks successfully created!: ${event.detail}`);
+    taskListStore.updateTask(
+      {
+        id: items.id,
+        text: event.detail
+      },
+      listIndex
+    );
   }
 </script>
 
