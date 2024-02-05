@@ -5,10 +5,20 @@
   export let listTitle;
   export let tasks;
   export let listIndex;
+
+  function drop() {
+    console.log("dropping item!");
+  }
 </script>
 
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
-  <div class="bg-slate-100 flex-it rounded-lg max-h-full">
+  <div
+    on:drop={drop}
+    on:dragover|preventDefault={() => {}}
+    role="button"
+    tabindex="0"
+    class="bg-slate-100 flex-it rounded-lg max-h-full"
+  >
     <div class="flex-it m-3">
       <div class="flex justify-center flex-row">
         <div class="text-xl font-bold mr-2">{listTitle}</div>
