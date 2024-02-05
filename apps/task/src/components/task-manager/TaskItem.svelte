@@ -14,9 +14,19 @@
       listIndex
     );
   }
+
+  function dragStart() {
+    console.log("dragging");
+  }
 </script>
 
-<div class="flex-it p-2 bg-slate-200 mb-2 cursor-pointer rounded-lg">
+<div
+  draggable="true"
+  on:dragstart={dragStart}
+  role="button"
+  tabindex="0"
+  class="flex-it p-2 bg-slate-200 mb-2 cursor-pointer rounded-lg"
+>
   <div class="flex-it">
     <Editable bind:value={items.text} on:save={save}>
       <div class="flex-it flex-row">
