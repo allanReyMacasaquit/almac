@@ -3,12 +3,25 @@ import { DEFAULT_DATA } from "../data";
 
 const createStore = () => {
   const taskList = writable(DEFAULT_DATA);
-  const { subscribe } = taskList;
+  const { subscribe, update } = taskList;
 
   return {
     subscribe,
-    updateTask: (items, listIndex) => {
-      taskList.update((list) => {
+    addTaskList: () => {
+      update((list) => {
+        return [
+          ...list,
+          {
+            id: new Date().toISOString(),
+            text: "new List",
+            items: []
+          }
+        ];
+      });
+    },
+
+    updateTaskItems: (items, listIndex) => {
+      update((list) => {
         // Updating the taskList using Svelte's update function.
         const taskIndex = list[listIndex].items.findIndex((item) => item.id === items.id); // Finding the index of the task with the matching id.
 

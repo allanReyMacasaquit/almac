@@ -8,7 +8,10 @@
 </div>
 <div class="p-10 h-full">
   <div class="text-2xl mb-6">Personal Projects</div>
-  <button class="text-xl mb-3 font-bold cursor-pointer hover:underline flex items-start">
+  <button
+    on:click={taskListStore.addTaskList}
+    class="text-xl mb-3 font-bold cursor-pointer hover:underline flex items-start"
+  >
     + Add List
   </button>
   <div class="flex-it h-full">

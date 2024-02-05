@@ -6,7 +6,7 @@
   export let listIndex;
 
   function save(event) {
-    taskListStore.updateTask(
+    taskListStore.updateTaskItems(
       {
         id: items.id,
         text: event.detail
