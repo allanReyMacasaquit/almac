@@ -1,6 +1,8 @@
 <script>
+  import { flip } from "svelte/animate";
   import TaskList from "../../components/task-manager/TaskList.svelte";
   import { taskListStore } from "../../stores/tasks.js";
+  import { fly } from "svelte/transition";
 </script>
 
 <div>
@@ -17,7 +19,9 @@
   <div class="flex-it h-full flex-1">
     <div class="flex-it flex-row rounded-xl h-3/4">
       {#each $taskListStore as list, index (list.id)}
-        <TaskList listTitle={list.text} tasks={list.items} id={list.id} listIndex={index} />
+        <div animate:flip in:fly={{ y: 50 }}>
+          <TaskList listTitle={list.text} tasks={list.items} id={list.id} listIndex={index} />
+        </div>
       {/each}
     </div>
   </div>

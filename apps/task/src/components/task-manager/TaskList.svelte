@@ -7,6 +7,9 @@
 <script>
   import { taskListStore } from "../../stores/tasks";
   import TaskItem from "./TaskItem.svelte";
+  import { flip } from "svelte/animate";
+  import { fade, fly } from "svelte/transition";
+  import { send, receive } from "../../transitions/index.js";
 
   export let listTitle;
   export let tasks;
@@ -58,7 +61,9 @@
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
       {#each tasks as task, itemsIndex (task.id)}
-        <TaskItem items={task} {listIndex} {itemsIndex} />
+        <div out:fade in:fly={{ y: -50 }} animate:flip>
+          <TaskItem items={task} {listIndex} {itemsIndex} />
+        </div>
       {/each}
     </div>
     <button on:click={taskListStore.addTaskItems(listIndex)} class="underline flex p-2">
@@ -69,8 +74,8 @@
 
 <style>
   .hovering {
-    border: 2px solid;
-    border-color: rgb(187 247 208);
+    border: 1px solid;
+    border-color: rgb(30 41 59);
     background-color: rgb(203 213 225);
   }
 </style>
