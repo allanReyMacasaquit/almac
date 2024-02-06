@@ -8,10 +8,12 @@ const createStore = () => {
   return {
     subscribe,
 
-    moveItems: (moveData, movetoListIndex) => {
-      console.log(`Source from List index: ${moveData.listIndex}`);
-      console.log(`Source items index: ${moveData.itemsIndex}`);
-      console.log(`Dropping to list Index: ${movetoListIndex}`);
+    moveItems: (sourceData, movetoListIndex) => {
+      update((list) => {
+        const [task] = list[sourceData.listIndex].items.splice(sourceData.itemsIndex, 1);
+        list[movetoListIndex].items.push(task);
+        return list;
+      });
     },
 
     addTaskItems: (itemIndex) => {
