@@ -1,25 +1,36 @@
+<script context="module">
+  import { writable } from "svelte/store";
+
+  let listHoverId = writable(null);
+</script>
+
 <script>
   import { taskListStore } from "../../stores/tasks";
   import TaskItem from "./TaskItem.svelte";
 
   export let listTitle;
   export let tasks;
+  export let id;
   export let listIndex;
 
   function drop(e) {
     const sourceJson = e.dataTransfer.getData("text/plain");
     const sourceData = JSON.parse(sourceJson);
-
     taskListStore.moveItems(sourceData, listIndex);
+    listHoverId.set(null);
   }
 </script>
 
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
   <div
+    on:dragenter={() => {
+      listHoverId.set(id);
+    }}
     on:drop={drop}
     on:dragover|preventDefault={() => {}}
     role="button"
     tabindex="0"
+    class:hovering={id == $listHoverId}
     class="bg-slate-100 flex-it rounded-lg max-h-full"
   >
     <div class="flex-it m-3">
@@ -55,3 +66,11 @@
     </button>
   </div>
 </div>
+
+<style>
+  .hovering {
+    border: 2px solid;
+    border-color: rgb(187 247 208);
+    background-color: rgb(203 213 225);
+  }
+</style>

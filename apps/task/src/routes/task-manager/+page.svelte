@@ -17,7 +17,7 @@
   <div class="flex-it h-full flex-1">
     <div class="flex-it flex-row rounded-xl h-3/4">
       {#each $taskListStore as list, index (list.id)}
-        <TaskList listTitle={list.text} tasks={list.items} listIndex={index} />
+        <TaskList listTitle={list.text} tasks={list.items} id={list.id} listIndex={index} />
       {/each}
     </div>
   </div>

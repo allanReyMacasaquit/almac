@@ -24,7 +24,7 @@ const createStore = () => {
           ...items,
           {
             id: new Date().toISOString(),
-            text: "new task.."
+            text: ""
           }
         ];
         return updatedList;
