@@ -2,7 +2,10 @@ import { writable } from "svelte/store";
 import { DEFAULT_DATA } from "../data";
 
 const createStore = () => {
-  const taskList = writable(DEFAULT_DATA);
+  const storedList = localStorage.getItem("local-storage");
+  const _storedData = storedList ? JSON.parse(storedList) : DEFAULT_DATA;
+
+  const taskList = writable(_storedData);
   const { subscribe, update } = taskList;
 
   return {
@@ -60,3 +63,9 @@ const createStore = () => {
 };
 
 export const taskListStore = createStore();
+
+taskListStore.subscribe((list) => {
+  if (list) {
+    localStorage.setItem("local-storage", JSON.stringify(list));
+  }
+});

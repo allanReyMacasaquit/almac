@@ -76,6 +76,5 @@
   .hovering {
     border: 1px solid;
     border-color: rgb(30 41 59);
-    background-color: rgb(203 213 225);
   }
 </style>
