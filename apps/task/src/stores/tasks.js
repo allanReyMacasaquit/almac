@@ -34,6 +34,13 @@ const createStore = () => {
       });
     },
 
+    removeTaskItems: (listIndex, itemsIndex) => {
+      update((list) => {
+        list[listIndex].items.splice(itemsIndex, 1);
+        return list;
+      });
+    },
+
     addTaskList: () => {
       update((list) => {
         return [
@@ -44,6 +51,13 @@ const createStore = () => {
             items: []
           }
         ];
+      });
+    },
+
+    removeTaskList: (listIndex) => {
+      update((list) => {
+        list.splice(listIndex, 1);
+        return list;
       });
     },
 
