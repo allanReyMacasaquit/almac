@@ -47,7 +47,7 @@ const createStore = () => {
           ...list,
           {
             id: new Date().toISOString(),
-            text: "new List",
+            text: "",
             items: []
           }
         ];
@@ -57,6 +57,13 @@ const createStore = () => {
     removeTaskList: (listIndex) => {
       update((list) => {
         list.splice(listIndex, 1);
+        return list;
+      });
+    },
+
+    updateListItems: (title, listIndex) => {
+      update((list) => {
+        list[listIndex].text = title;
         return list;
       });
     },

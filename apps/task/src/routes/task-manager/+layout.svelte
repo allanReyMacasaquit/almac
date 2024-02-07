@@ -1,3 +1,3 @@
-<div class="flex-it p-10 h-full overflow-y-hidden bg-neutral-200">
+<div class="flex-it p-10 h-full overflow-y-hidden items-start bg-neutral-200">
   <slot />
 </div>
