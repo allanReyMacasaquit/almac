@@ -40,7 +40,7 @@
     class:hovering={id == $listHoverId}
     class="bg-slate-100 flex-it rounded-lg max-h-full"
   >
-    <div class="flex-it m-2">
+    <div class="flex-it m-2 border border-slate-300 rounded-lg">
       <Editable bind:value={listTitle} on:save={saveTitle}>
         <div class="flex justify-between px-2 rounded-lg flex-row bg-neutral-200">
           {#if !listTitle}
@@ -48,7 +48,9 @@
               create title project
             </div>
           {/if}
-          <div class="text-xl font-bold py-2 tracking-widest capitalize">{listTitle}</div>
+          <div class="text-2xl text-slate-500 font-bold py-2 tracking-widest uppercase">
+            {listTitle}
+          </div>
           <button
             on:click|stopPropagation={() => {
               taskListStore.removeTaskList(listIndex);
