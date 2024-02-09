@@ -13,12 +13,12 @@
 <div class="text-2xl">{data.appName} / {data.board}</div>
 <div class="p-10 h-full flex-it items-start">
   <div class="flex-it h-full flex-1 mt-10">
-    <div class="flex-it flex-col md:flex-row gap-5 mb-4 h-3/4">
+    <div class="flex-it flex-col md:flex-row gap-5 mb-4 h-4/5">
       {#each $taskListStore as list, index (list.id)}
         <div
           animate:flip
           in:fly={{ y: 50 }}
-          class="bg-slate-200 p-4 rounded-lg mt-4with-scrollbar h-3/4"
+          class="bg-slate-200 p-4 rounded-lg mt-4 with-scrollbar h-3/4"
         >
           <TaskList listTitle={list.text} tasks={list.items} id={list.id} listIndex={index} />
         </div>

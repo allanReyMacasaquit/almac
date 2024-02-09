@@ -28,7 +28,7 @@
   role="button"
   tabindex="0"
   style="background-color: {itemsIndex === 0 ? 'lightgreen' : ''}"
-  class="flex-it p-2 bg-slate-50 mb-2 cursor-pointer border border-slate-500 rounded-lg"
+  class="flex-it p-2 mt-2 bg-slate-50 mb-2 cursor-pointer border border-slate-500 rounded-lg"
 >
   <div class="flex-it p-2">
     <Editable bind:value={items.text} on:save={save}>
