@@ -27,15 +27,21 @@
   on:dragstart={dragStart}
   role="button"
   tabindex="0"
-  class="flex-it p-2 bg-slate-200 mb-2 cursor-pointer border border-slate-300 rounded-lg"
+  style="background-color: {itemsIndex === 0 ? 'lightgreen' : ''}"
+  class="flex-it p-2 bg-slate-50 mb-2 cursor-pointer border border-slate-500 rounded-lg"
 >
-  <div class="flex-it">
+  <div class="flex-it p-2">
     <Editable bind:value={items.text} on:save={save}>
       <div class="flex-it flex-row">
         {#if !items.text}
-          <div class="text-gray-400">create new task...</div>
+          <div class="text-gray-400">click to add...</div>
         {/if}
-        <div class="flex flex-1 text-slate-800 tracking-widest capitalize">{items.text}</div>
+        <div
+          style="font-size: {itemsIndex === 0 ? '20px' : ''}"
+          class="flex flex-1 text-slate-800 tracking-widest capitalize"
+        >
+          {items.text}
+        </div>
         <div class="flex items-end hover:text-red-600">
           <button
             on:click|stopPropagation={() => {

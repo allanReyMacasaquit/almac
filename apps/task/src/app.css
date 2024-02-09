@@ -181,7 +181,7 @@ body {
   width: 4px;
 }
 .with-scrollbar::-webkit-scrollbar-track-piece {
-  background: rgba(9, 30, 66, 0.08);
+  background: rgb(248 250 252);
 }
 .with-scrollbar::-webkit-scrollbar-track-piece:vertical:start {
   border-radius: 4px 4px 0 0;

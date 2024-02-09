@@ -14,7 +14,7 @@ const createStore = () => {
     moveItems: (sourceData, movetoListIndex) => {
       update((list) => {
         const [task] = list[sourceData.listIndex].items.splice(sourceData.itemsIndex, 1);
-        list[movetoListIndex].items.push(task);
+        list[movetoListIndex].items.unshift(task); // Use unshift() instead of push()
         return list;
       });
     },

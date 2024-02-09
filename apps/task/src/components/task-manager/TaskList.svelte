@@ -38,9 +38,9 @@
     role="button"
     tabindex="0"
     class:hovering={id == $listHoverId}
-    class="bg-slate-100 flex-it rounded-lg max-h-full"
+    class="bg-slate-200 flex-it rounded-lg max-h-full"
   >
-    <div class="flex-it m-2 border border-slate-300 rounded-lg">
+    <div class="flex-it mx-2 border border-slate-500 mt-2 rounded-lg">
       <Editable bind:value={listTitle} on:save={saveTitle}>
         <div class="flex justify-between px-2 rounded-lg flex-row bg-neutral-200">
           {#if !listTitle}
@@ -56,7 +56,7 @@
               taskListStore.removeTaskList(listIndex);
             }}
           >
-            <div class="flex hover:text-red-600 items-center">
+            <div class="flex mr-2 hover:text-red-600 items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

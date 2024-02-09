@@ -12,20 +12,24 @@
 </div>
 <div class="text-2xl">{data.appName} / {data.board}</div>
 <div class="p-10 h-full flex-it items-start">
-  <button
-    out:fade
-    on:click={taskListStore.addTaskList}
-    class="text-xl justify-center font-bold cursor-pointer w-full bg-slate-200 text-slate-500 rounded-xl p-4 max-w-full flex items-center border border-slate-300"
-  >
-    <i class="fa fa-plus py-1 mr-2" aria-hidden="true"></i>Add List
-  </button>
   <div class="flex-it h-full flex-1 mt-10">
-    <div class="flex-it flex-row rounded-xl border border-slate-300 p-4 shadow-lg h-3/4">
+    <div class="flex-it flex-col md:flex-row gap-5 mb-4 h-3/4">
       {#each $taskListStore as list, index (list.id)}
-        <div animate:flip in:fly={{ y: 50 }}>
+        <div
+          animate:flip
+          in:fly={{ y: 50 }}
+          class="bg-slate-200 p-4 rounded-lg mt-4with-scrollbar h-3/4"
+        >
           <TaskList listTitle={list.text} tasks={list.items} id={list.id} listIndex={index} />
         </div>
       {/each}
+      <button
+        out:fade
+        on:click={taskListStore.addTaskList}
+        class="text-xl mt-2 md:mt-0 mb-5 bg-slate-800 h-20 top-[-20%] right-0 justify-center font-bold cursor-pointer whitespace-nowrap text-slate-50 rounded-xl p-4 max-w-full md:absolute items-center border border-slate-300"
+      >
+        <i class="fa fa-plus py-1 mr-2" aria-hidden="true"></i>Add Ministry
+      </button>
     </div>
   </div>
 </div>
