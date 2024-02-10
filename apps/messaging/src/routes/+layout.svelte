@@ -7,6 +7,8 @@
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
   import NavSidebar from "../components/sidebar/NavSidebar.svelte";
   import TrendsSidebar from "../components/sidebar/TrendsSidebar.svelte";
+
+  export let data;
 </script>
 
 <div class="w-full h-full rgb(1, 44, 57) text-gray-100">
@@ -30,7 +32,7 @@
             </div>
             <div class="flex-it md:w-92 w-0 mt-4">
               <!-- TRENDS SIDEBAR START -->
-              <TrendsSidebar />
+              <TrendsSidebar trends={data.trends} />
               <!-- TRENDS SIDEBAR END -->
             </div>
           </div>

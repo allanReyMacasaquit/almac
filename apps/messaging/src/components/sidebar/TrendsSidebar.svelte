@@ -1,46 +1,20 @@
 <script>
-  const randomize = () => Math.floor(Math.random() * 300);
-  const trends = [
-    {
-      category: "Pastoral and Counselling",
-      content: "Be of Good courage!",
-      shareCount: randomize()
-    },
-    {
-      category: "Praise and Worship team",
-      content: "Hallelujah to the lamb!!",
-      shareCount: randomize()
-    },
-    {
-      category: "Sunday School Team",
-      content: "New teaching materials are out now!",
-      shareCount: randomize()
-    },
-    {
-      category: "Bible Study Groups",
-      content: "It's goin well...",
-      shareCount: randomize()
-    },
-    {
-      category: "Events",
-      content: "Some big events are coming!",
-      shareCount: randomize()
-    },
-    {
-      category: "Youth for Christ",
-      content: "Joint fellowship we be held at FCC Kalayaan Center.",
-      shareCount: randomize()
-    }
-  ];
-  console.log(trends);
+  export let trends;
 </script>
 
-<div class="overflow-hidden flex-it rounded-2xl">
+<div
+  style="background-image: linear-gradient(to bottom, rgb(88 28 135), rgb(1, 45, 57));"
+  class="overflow-hidden flex-it rounded-2xl border border-slate-700 p-2"
+>
   <div class="flex-it p-4">
     <span class="text-xl font-bold">Trends</span>
   </div>
-  {#each trends as trend}
-    <div class="flex-it p-4 cursor-pointer transition duration-200 hover:bg-blue-800">
+  {#each trends as trend, index}
+    <div
+      class="flex-it p-4 cursor-pointer transition duration-200 rounded-lg m-2 {index % 2 === 0
+        ? 'bg-violet-900'
+        : 'bg-violet-800'} hover:bg-blue-800"
+    >
       <div class="flex-it">
         <span class="text-gray-400 text-sm"> {trend.category}</span>
         <span class="text-lg font-bold">{trend.content}</span>
