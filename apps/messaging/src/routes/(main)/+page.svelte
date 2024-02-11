@@ -1,6 +1,6 @@
 <script>
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
-  import SharesPost from "../../components/shares/SharesPost.svelte";
+  import SharesPost from "$components/shares/SharesPost.svelte";
 
   let shares = [];
   let shareContent = "";
@@ -19,7 +19,6 @@
       content: shareContent
     };
     shares = [share, ...shares];
-    console.log(shares);
     shareContent = "";
   }
 </script>
