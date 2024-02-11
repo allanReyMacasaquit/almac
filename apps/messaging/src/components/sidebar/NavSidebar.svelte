@@ -17,7 +17,7 @@
             class="p-3 pt-4 xl:pb-3 pb-0 xl:text-2xl text-sm font-bold transition duration-200 hover:opacity-80"
           >
             <a href="/">
-              <h1>Five loaves of Bread</h1>
+              <h1 class="gradient-text">Good News</h1>
             </a>
           </div>
           <div class="my-1 w-full flex-it">
@@ -25,7 +25,7 @@
               {#each navLinks as link}
                 <a class="flex-it items-start flex-grow w-full" href={link.href}>
                   <div
-                    class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-blue-800 hover:rounded-3xl transition duration-200"
+                    class="p-3 flex-row justify-center items-center flex-it rounded-3xl hover:bg-violet-800 hover:rounded-3xl transition duration-200"
                   >
                     <div class="flex-it">
                       <div class="icon">
@@ -41,14 +41,15 @@
             </nav>
           </div>
           <!-- GLIDER SEND-MESSAGE BUTTON -->
-          <div class="my-1 flex-it w-10/12 cursor-pointer">
+          <div class="flex-it cursor-pointer xl:w-64 xl:p-16">
             <div
-              class="bg-blue-800 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex-it transition"
+              class="text-white flex-it sm:bg-blue-800 sm:hover:bg-blue-700 rounded-full font-bold flex-it transition"
             >
               <div
-                class="flex-it flex-row text-xl font-bold text-white items-start justify-center truncate duration-200"
+                class=" px-1 flex-row text-xl font-bold text-white justify-start items-center truncate duration-200"
               >
-                <div>Share It</div>
+                <img src="assets/images/share-icon.png" alt="share" />
+                <h1 class="hidden xl:block text-sm text-center">Share</h1>
               </div>
             </div>
           </div>
@@ -60,15 +61,11 @@
           >
             <div class="flex-it">
               <div class="w-10 h-10 overflow-visible">
-                <img
-                  alt=""
-                  class="rounded-full"
-                  src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png"
-                />
+                <img alt="" class="rounded-full" src="assets/images/user.png" />
               </div>
             </div>
             <div class="flex-it xl:flex hidden flex-grow flex-row justify-between items-center">
-              <div class="flex-it mx-3 font-bold">Filip99</div>
+              <div class="flex-it mx-3 font-bold">Allan</div>
               <div class="flex-it">
                 <div class="icon">
                   <TiSocialFlickr />

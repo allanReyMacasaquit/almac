@@ -1,20 +1,34 @@
 <script>
-  import TiHeartOutline from "svelte-icons/ti/TiHeartOutline.svelte";
-
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
-  import TiMessage from "svelte-icons/ti/TiMessage.svelte";
-  import TiTrash from "svelte-icons/ti/TiTrash.svelte";
+  import SharesPost from "../components/shares/SharesPost.svelte";
+
+  let shares = [];
+  let shareContent = "";
+
+  function handleShareContent() {
+    const date = new Date().toISOString();
+    const share = {
+      id: date,
+      user: {
+        username: "allan",
+        avatar: "assets/images/user.png"
+      },
+      likesCount: 0,
+      subSharesCount: 0,
+      date: date,
+      content: shareContent
+    };
+    shares = [share, ...shares];
+    console.log(shares);
+    shareContent = "";
+  }
 </script>
 
 <!-- HOME PAGE START -->
 <div class="flex-it py-1 px-4 flex-row">
   <div class="flex-it mr-4">
     <div class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80">
-      <img
-        alt=""
-        class="rounded-full"
-        src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png"
-      />
+      <img alt="" class="rounded-full" src="assets/images/user.png" />
     </div>
   </div>
 
@@ -22,8 +36,9 @@
   <div class="flex-it flex-grow">
     <div class="flex-it">
       <textarea
+        bind:value={shareContent}
         name="content"
-        rows="1"
+        rows="3"
         id="glide"
         class="bg-transparent resize-none overflow-hidden block !outline-none !border-none border-transparent focus:border-transparent focus:ring-0 text-gray-100 text-xl w-full p-0"
         placeholder={"What's new?"}
@@ -41,6 +56,7 @@
       </div>
       <div class="flex-it w-32 mt-3 cursor-pointer">
         <button
+          on:click={handleShareContent}
           type="button"
           class="disabled:cursor-not-allowed disabled:bg-gray-400 bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full flex-it transition duration-200"
         >
@@ -56,58 +72,6 @@
 
 <div class="h-px bg-gray-700 my-1" />
 
-<!-- GLIDE POST START -->
-<div class="flex-it p-4 border-b-1 border-solid border-gray-700">
-  <div class="flex-it flex-row">
-    <div class="flex-it mr-4">
-      <div
-        class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80"
-      >
-        <img
-          alt=""
-          class="rounded-full"
-          src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png"
-        />
-      </div>
-    </div>
-
-    <article class="flex-it flex-grow flex-shrink cursor-pointer">
-      <div class="flex-it justify-center flex-grow mb-1">
-        <div class="flex-it justify-between flex-row w-full">
-          <div>
-            <span class="font-bold">Filip99</span>
-            <span class="mx-2">&#8226;</span>
-            <span class="text-gray-400">2h</span>
-          </div>
-          <div class="text-gray-400 cursor-pointer transition hover:text-red-400">
-            <div class="icon">
-              <TiTrash />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex-it flex-row flex-grow-0 items-center mb-2">
-        <div class="flex-it mr-3 mb-3 w-full">My First Post</div>
-      </div>
-
-      <div class="flex-it flex-row flex-grow text-gray-400">
-        <div
-          class="flex-it flex-row items-center cursor-pointer mr-5 transition hover:text-blue-400"
-        >
-          <div class="icon">
-            <TiMessage />
-          </div>
-          <span class="text-xs ml-3">321</span>
-        </div>
-
-        <div class="flex-it flex-row items-center cursor-pointer transition hover:text-pink-400">
-          <div class="icon">
-            <TiHeartOutline />
-          </div>
-          <span class="text-xs ml-3">123</span>
-        </div>
-      </div>
-    </article>
-  </div>
-</div>
+{#each shares as share (share.id)}
+  <SharesPost {share} />
+{/each}

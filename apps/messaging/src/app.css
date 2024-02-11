@@ -215,3 +215,16 @@ body {
   height: 22px;
   display: flex;
 }
+
+.gradient-text {
+  /* Vendor prefixes for better browser support */
+  background: linear-gradient(45deg, #ff8a00, #e52e71);
+  /* WebKit (Safari/Chrome) */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Mozilla Firefox */
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  /* Standard */
+  background-clip: text;
+}
