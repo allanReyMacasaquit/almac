@@ -19,7 +19,7 @@
     >
       <div class="flex-it">
         <span class="h-16 w-16 object-cover mb-2">
-          <img src={trend.icon} alt="trend.icon" />
+          <img src={trend.icon} alt="trendIcon" />
         </span>
         <span class="text-gray-400 text-sm"> {trend.category}</span>
         <span class="text-lg font-bold">{trend.content}</span>
