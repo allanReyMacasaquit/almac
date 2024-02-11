@@ -1,5 +1,5 @@
-<div class="flex-it justify-center items-center h-full">
-  <div class="text-white text-4xl font-bold">Good News - Create Account</div>
+<div class="flex-it justify-center items-center p-2 h-full">
+  <div class="text-white text-4xl text-center font-bold mt-20">Good News - Create Account</div>
   <div class="mt-10 flex-it h-100 xs:w-100 w-full bg-white p-10 rounded-2xl">
     <div class="flex-it">
       <form class="flex-it">
@@ -14,7 +14,7 @@
                   type="text"
                   name="fullName"
                   id="fullName"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 p-4 border rounded-lg block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
                 <div class="flex-it grow text-xs bg-red-400 text-white p-3 pl-3 mt-1 rounded-md">
                   Error Error Beep Beep!
@@ -22,14 +22,14 @@
               </div>
 
               <div class="flex-it py-2">
-                <label for="nickName" class="block text-sm font-medium text-gray-700">
+                <label for="username" class="block text-sm font-medium text-gray-700">
                   Nick Name
                 </label>
                 <input
                   type="text"
-                  name="nickName"
-                  id="nickName"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  name="username"
+                  id="username"
+                  class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
 
@@ -39,7 +39,7 @@
                   type="text"
                   name="email"
                   id="email"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
 
@@ -49,7 +49,7 @@
                   type="text"
                   name="avatar"
                   id="avatar"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
 
@@ -61,7 +61,7 @@
                   type="password"
                   name="password"
                   id="password"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
 
@@ -73,14 +73,14 @@
                   type="password"
                   name="passwordConfirmation"
                   id="passwordConfirmation"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
           </div>
           <div class="text-sm text-gray-600 pb-4">
             Already Registered?{" "}
-            <a class="hover:underline" href="/"> Go to Login </a>
+            <a class="hover:underline" href="/login"> Go to Login </a>
           </div>
           <div class="flex-it py-2">
             <button

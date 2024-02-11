@@ -1,5 +1,5 @@
-<div class="flex-it justify-center items-center h-full">
-  <div class="text-white text-4xl font-bold">Good News - Get In</div>
+<div class="flex-it justify-center items-center p-2 h-full">
+  <div class="text-white text-4xl text-center font-bold">Good News - Get In</div>
   <div class="mt-10 flex-it h-100 xs:w-100 w-full bg-white p-10 rounded-2xl">
     <div class="flex-it">
       <form class="flex-it">
@@ -12,7 +12,7 @@
                   type="email"
                   name="email"
                   id="email"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 p-4 border rounded-lg block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
                 <div class="flex-it grow text-xs bg-red-400 text-white p-3 pl-3 mt-1 rounded-md">
                   Error Error Beep Beep!
@@ -26,14 +26,14 @@
                   type="password"
                   name="password"
                   id="password"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 p-4 border rounded-lg block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
           </div>
           <div class="text-sm text-gray-600 pb-4">
             No Account Yet?{" "}
-            <a class="hover:underline" href="/"> Create a new account </a>
+            <a class="hover:underline" href="/register"> Create a new account </a>
           </div>
           <div class="flex-it py-2">
             <button
