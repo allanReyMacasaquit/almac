@@ -1,6 +1,7 @@
 <script>
   import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte";
   import navLinks from "./navLinks.js";
+  import Popup from "$components/utils/Popup.svelte";
 </script>
 
 <header class="lg:flex-grow flex-it items-end">
@@ -51,24 +52,26 @@
         </div>
         <!-- PROFILE MENU -->
         <div class="flex-it my-3 hover:cursor-pointer">
-          <div
-            class="flex-it items-center flex-row p-3 rounded-3xl hover:bg-blue-800 hover:rounded-3xl transition duration-200 cursor-pointer"
-          >
-            <div class="flex-it">
-              <div class="w-10 h-10 overflow-visible">
-                <img alt="" class="rounded-full" src="assets/images/user.png" />
-              </div>
-            </div>
-            <div class="flex-it xl:flex hidden flex-grow flex-row justify-between items-center">
-              <div class="flex-it mx-3 font-bold">Allan</div>
+          <Popup>
+            <div
+              class="flex-it items-center flex-row p-3 rounded-3xl hover:bg-blue-800 hover:rounded-3xl transition duration-200 cursor-pointer"
+            >
               <div class="flex-it">
-                <div class="icon">
-                  <TiSocialFlickr />
+                <div class="w-10 h-10 overflow-visible">
+                  <img alt="" class="rounded-full" src="assets/images/user.png" />
                 </div>
-                <!-- <FiMoreHorizontal /> -->
+              </div>
+              <div class="flex-it xl:flex hidden flex-grow flex-row justify-between items-center">
+                <div class="flex-it mx-3 font-bold">Allan</div>
+                <div class="flex-it">
+                  <div class="icon">
+                    <TiSocialFlickr />
+                  </div>
+                  <!-- <FiMoreHorizontal /> -->
+                </div>
               </div>
             </div>
-          </div>
+          </Popup>
         </div>
       </div>
     </div>

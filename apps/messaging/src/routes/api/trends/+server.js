@@ -1,7 +1,5 @@
 import { json } from "@sveltejs/kit";
 
-json;
-
 export function GET() {
   const randomize = () => Math.floor(Math.random() * 300);
   const trends = [
