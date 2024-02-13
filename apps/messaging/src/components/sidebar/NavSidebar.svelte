@@ -51,13 +51,13 @@
           </div>
         </div>
         <!-- PROFILE MENU -->
-        <div class="flex-it my-3 hover:cursor-pointer">
+        <div class="flex-it hover:cursor-pointer">
           <Popup>
             <div
-              class="flex-it items-center flex-row p-3 rounded-3xl hover:bg-blue-800 hover:rounded-3xl transition duration-200 cursor-pointer"
+              class="flex-it items-center flex-row p-2 rounded-2xl sm:hover:bg-blue-800 hover:rounded-2xl transition duration-200 cursor-pointer"
             >
               <div class="flex-it">
-                <div class="w-10 h-10 overflow-visible">
+                <div class="w-10 h-10 overflow-visible flex-it justify-center">
                   <img alt="" class="rounded-full" src="assets/images/user.png" />
                 </div>
               </div>

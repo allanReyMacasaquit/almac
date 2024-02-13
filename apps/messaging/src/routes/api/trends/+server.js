@@ -41,7 +41,8 @@ export function GET() {
     {
       id: "6",
       category: "Youth for Christ",
-      content: "Joint fellowship we be held at FCC Kalayaan Center.",
+      content:
+        "Joint fellowship we be held at FCC Kalayaan Center.Joint fellowship we be held at FCC Kalayaan Center",
       shareCount: randomize(),
       icon: "assets/images/youth.png"
     }

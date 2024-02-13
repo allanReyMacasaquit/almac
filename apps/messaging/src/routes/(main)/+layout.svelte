@@ -24,7 +24,7 @@
                 <slot />
               </div>
             </div>
-            <div class="flex-it md:w-92 w-0 mt-4">
+            <div class="hidden sm:flex-it ml-4 mt-4">
               <!-- TRENDS SIDEBAR START -->
               <TrendsSidebar trends={data.trends} />
               <!-- TRENDS SIDEBAR END -->
