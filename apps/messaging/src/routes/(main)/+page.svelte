@@ -1,9 +1,12 @@
 <script>
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
   import SharesPost from "$components/shares/SharesPost.svelte";
+  import { getAuthContext } from "$components/context/auth";
 
   let shares = [];
   let shareContent = "";
+
+  const { isAuthenticated, isLoading } = getAuthContext();
 
   function handleShareContent() {
     const date = new Date().toISOString();
@@ -70,7 +73,8 @@
 </div>
 
 <div class="h-px bg-gray-700 my-1" />
-
+Is Auth: {$isAuthenticated}
+Is Loading: {$isLoading}
 {#each shares as share (share.id)}
   <SharesPost {share} />
 {/each}

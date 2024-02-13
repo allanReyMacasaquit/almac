@@ -5,7 +5,7 @@
   export let data;
 </script>
 
-<div class="w-full h-full rgb(1, 44, 57) text-gray-100">
+<div class="w-full h-full overflow-x-hidden rgb(1, 44, 57) text-gray-100">
   <div class="flex h-full min-h-252">
     <!-- SIDEBAR START -->
     <NavSidebar />

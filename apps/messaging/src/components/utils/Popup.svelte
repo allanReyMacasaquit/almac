@@ -8,20 +8,18 @@
 
   onMount(() => {
     addEventListener("click", closePopup);
-    console.log("ONMOUNT");
+
     return () => {
       removeEventListener("click", closePopup);
-      console.log("remove mount");
     };
   });
 
   afterUpdate(() => {
-    (popUpBottomPosition = openerMenu.clientHeight * 1.2 + "px"), console.log("2");
+    popUpBottomPosition = openerMenu.clientHeight * 1.2 + "px";
   });
 
   function closePopup() {
     if (isOpen && !isPopupClicked) isOpen = !isOpen;
-    console.log("close called");
   }
   function isPopupClicked(targetEl) {
     return popup.contains(targetEl);

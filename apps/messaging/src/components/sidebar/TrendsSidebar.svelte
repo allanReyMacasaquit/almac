@@ -4,7 +4,7 @@
 
 <div
   style=" background-image: linear-gradient(to bottom, rgb(88 28 135), rgb(1, 45, 57));"
-  class="mr-96 overflow-hidden w-auto flex-it rounded-2xl border border-slate-700 p-2"
+  class="mr-96 ml-10 mt-6 overflow-hidden w-auto flex-it rounded-2xl border border-slate-700 p-2"
 >
   <div class="hidden sm:flex-it p-4">
     <span class="text-2xl tracking-widest text-center">Trends</span>
