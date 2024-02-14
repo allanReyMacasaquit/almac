@@ -1,13 +1,24 @@
 <script>
+  import Loader from "$components/utils/Loader.svelte";
   import { setContext } from "svelte";
   import { writable } from "svelte/store";
 
-  let isAuthenticated = writable(false);
-  let isLoading = writable(false);
+  let isLoading = writable(true);
+  let isAuthenticated = writable(false, (set) => {
+    setTimeout(() => {
+      set(true);
+      isLoading.set(false);
+    }, 1000);
+  });
+
   setContext("key", {
     isAuthenticated,
     isLoading
   });
 </script>
 
-<slot />
+{#if $isLoading && !$isAuthenticated}
+  <Loader size="100" />
+{:else}
+  <slot />
+{/if}

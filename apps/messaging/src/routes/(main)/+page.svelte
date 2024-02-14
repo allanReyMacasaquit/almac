@@ -6,8 +6,6 @@
   let shares = [];
   let shareContent = "";
 
-  const { isAuthenticated, isLoading } = getAuthContext();
-
   function handleShareContent() {
     const date = new Date().toISOString();
     const share = {
@@ -73,8 +71,7 @@
 </div>
 
 <div class="h-px bg-gray-700 my-1" />
-Is Auth: {$isAuthenticated}
-Is Loading: {$isLoading}
+
 {#each shares as share (share.id)}
   <SharesPost {share} />
 {/each}
