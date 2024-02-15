@@ -1,14 +1,17 @@
-export function createStore() {
+import { writable } from "svelte/store";
+
+function createFormStore(initialData) {
+  const form = writable(initialData);
+
   function validate(node, value) {
     console.log(node);
     console.log(value);
   }
 
   return {
-    validate
+    validate,
+    form
   };
 }
 
-const formHandlerStore = createStore();
-
-export default formHandlerStore;
+export default createFormStore;
