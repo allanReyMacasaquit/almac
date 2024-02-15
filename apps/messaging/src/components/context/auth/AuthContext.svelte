@@ -6,9 +6,9 @@
   let isLoading = writable(true);
   let isAuthenticated = writable(false, (set) => {
     setTimeout(() => {
-      set(true);
+      set(false);
       isLoading.set(false);
-    }, 1000);
+    }, 500);
   });
 
   setContext("key", {
