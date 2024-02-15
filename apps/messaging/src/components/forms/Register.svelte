@@ -1,4 +1,7 @@
 <script>
+  import formHandlerStore from "$stores/formHandler";
+
+  const { validate } = formHandlerStore;
   let registerFormData = {
     fullName: "",
     username: "",
@@ -27,6 +30,7 @@
                 </label>
                 <input
                   bind:value={registerFormData.fullName}
+                  use:validate={[1]}
                   type="text"
                   name="fullName"
                   id="fullName"
@@ -43,6 +47,7 @@
                 </label>
                 <input
                   bind:value={registerFormData.username}
+                  use:validate={[2]}
                   type="text"
                   name="username"
                   id="username"
@@ -54,6 +59,7 @@
                 <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                 <input
                   bind:value={registerFormData.email}
+                  use:validate={[3]}
                   type="text"
                   name="email"
                   id="email"
@@ -65,6 +71,7 @@
                 <label for="avatar" class="block text-sm font-medium text-gray-700"> Avatar </label>
                 <input
                   bind:value={registerFormData.avatar}
+                  use:validate={[4]}
                   type="text"
                   name="avatar"
                   id="avatar"
@@ -78,6 +85,7 @@
                 </label>
                 <input
                   bind:value={registerFormData.password}
+                  use:validate={[5]}
                   type="password"
                   name="password"
                   id="password"
@@ -91,6 +99,7 @@
                 </label>
                 <input
                   bind:value={registerFormData.passwordConfirmation}
+                  use:validate={[6]}
                   type="password"
                   name="passwordConfirmation"
                   id="passwordConfirmation"
