@@ -1,3 +1,14 @@
+<script>
+  let loginFormData = {
+    email: "",
+    password: ""
+  };
+
+  function submit() {
+    alert(JSON.stringify(loginFormData));
+  }
+</script>
+
 <div class="flex-it justify-center items-center h-full">
   <div class="text-white text-4xl text-center font-bold">Good News - Get In</div>
   <div class="mt-10 flex-it h-100 xs:w-100 w-full bg-white p-10">
@@ -9,6 +20,7 @@
               <div class="flex-it py-2">
                 <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                 <input
+                  bind:value={loginFormData.email}
                   type="email"
                   name="email"
                   id="email"
@@ -23,6 +35,7 @@
                   Password
                 </label>
                 <input
+                  bind:value={loginFormData.password}
                   type="password"
                   name="password"
                   id="password"
@@ -37,6 +50,7 @@
           </div>
           <div class="flex-it py-2">
             <button
+              on:click={submit}
               type="button"
               class="
               bg-blue-400 hover:bg-blue-500
