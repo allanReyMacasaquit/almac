@@ -1,6 +1,6 @@
 <script>
   import { afterUpdate, onMount } from "svelte";
-  import clickOutside from "$components/action/eventAction.js";
+  import clickOutside from "$actions/clickOutside.js";
   let isOpen = false;
   let openerMenu;
   let popUpBottomPosition;

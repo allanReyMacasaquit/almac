@@ -1,7 +1,15 @@
 <script>
-  import createFormStore from "$stores/formHandler";
+  import {
+    compareWithValidator,
+    firstUppercaseLetter,
+    maxLengthValidator,
+    minLengthValidator,
+    requiredValidator
+  } from "$actions/validators";
+  import createFormStore from "$stores/createFormStore";
+  import FormErrors from "./FormErrors.svelte";
 
-  const { validate, form } = createFormStore({
+  const { validate, submit, errors, value } = createFormStore({
     fullName: "",
     username: "",
     email: "",
@@ -10,8 +18,8 @@
     passwordConfirmation: ""
   });
 
-  function submit() {
-    alert(JSON.stringify($form));
+  function _submit(formData) {
+    alert(JSON.stringify(formData));
   }
 </script>
 
@@ -28,16 +36,18 @@
                   Full Name
                 </label>
                 <input
-                  bind:value={$form.fullName}
-                  use:validate={[1]}
+                  on:input={value}
+                  use:validate={[
+                    requiredValidator,
+                    (ele) => minLengthValidator(ele, 5),
+                    (ele) => maxLengthValidator(ele)
+                  ]}
                   type="text"
                   name="fullName"
                   id="fullName"
                   class="mt-1 p-4 border rounded-lg block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
-                <div class="flex-it grow text-xs bg-red-400 text-white p-3 pl-3 mt-1 rounded-md">
-                  Error Error Beep Beep!
-                </div>
+                <FormErrors errors={$errors.fullName} />
               </div>
 
               <div class="flex-it py-2">
@@ -45,37 +55,48 @@
                   Nick Name
                 </label>
                 <input
-                  bind:value={$form.username}
-                  use:validate={[2]}
+                  on:input={value}
+                  use:validate={[
+                    requiredValidator,
+                    (ele) => minLengthValidator(ele, 3),
+                    (ele) => maxLengthValidator(ele, 10)
+                  ]}
                   type="text"
                   name="username"
                   id="username"
                   class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
+                <FormErrors errors={$errors.username} />
               </div>
 
               <div class="flex-it py-2">
                 <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                 <input
-                  bind:value={$form.email}
-                  use:validate={[3]}
+                  on:input={value}
+                  use:validate={[
+                    requiredValidator,
+                    (ele) => minLengthValidator(ele, 10),
+                    (ele) => maxLengthValidator(ele, 50)
+                  ]}
                   type="text"
                   name="email"
                   id="email"
                   class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
+                <FormErrors errors={$errors.email} />
               </div>
 
               <div class="flex-it py-2">
                 <label for="avatar" class="block text-sm font-medium text-gray-700"> Avatar </label>
                 <input
-                  bind:value={$form.avatar}
-                  use:validate={[4]}
+                  on:input={value}
+                  use:validate={[requiredValidator]}
                   type="text"
                   name="avatar"
                   id="avatar"
                   class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
+                <FormErrors errors={$errors.avatar} />
               </div>
 
               <div class="flex-it py-2">
@@ -83,13 +104,18 @@
                   Password
                 </label>
                 <input
-                  bind:value={$form.password}
-                  use:validate={[5]}
+                  on:input={value}
+                  use:validate={[
+                    requiredValidator,
+                    (ele) => compareWithValidator(ele, "password"),
+                    (ele) => minLengthValidator(ele, 5)
+                  ]}
                   type="password"
                   name="password"
                   id="password"
                   class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
+                <FormErrors errors={$errors.password} />
               </div>
 
               <div class="flex-it py-2">
@@ -97,13 +123,14 @@
                   Password Confirmation
                 </label>
                 <input
-                  bind:value={$form.passwordConfirmation}
-                  use:validate={[6]}
+                  on:input={value}
+                  use:validate={[requiredValidator, (ele) => compareWithValidator(ele, "password")]}
                   type="password"
                   name="passwordConfirmation"
                   id="passwordConfirmation"
                   class="mt-1 block w-full p-4 border rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
+                <FormErrors errors={$errors.passwordConfirmation} />
               </div>
             </div>
           </div>
@@ -113,7 +140,7 @@
           </div>
           <div class="flex-it py-2">
             <button
-              on:click={submit}
+              on:click={submit(_submit)}
               type="button"
               class="
               bg-blue-400 hover:bg-blue-500 focus:ring-0
