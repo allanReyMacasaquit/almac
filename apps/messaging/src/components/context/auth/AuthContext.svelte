@@ -1,23 +1,23 @@
 <script>
   import Loader from "$components/utils/Loader.svelte";
-  import { setContext } from "svelte";
-  import { writable } from "svelte/store";
   import { auth } from "$db";
+  import { onAuthStateChanged } from "firebase/auth";
+  import { onMount, setContext } from "svelte";
+  import { writable } from "svelte/store";
 
   let isLoading = writable(true);
+  let isAuthenticated = writable(false);
 
-  const isAuthenticated = writable(false, (set) => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+  onMount(() => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        set(true);
-        isLoading.set(false);
+        isAuthenticated.set(true);
       } else {
-        set(false);
-        isLoading.set(true);
+        isAuthenticated.set(false);
       }
-    });
 
-    return unsubscribe;
+      isLoading.set(false);
+    });
   });
 
   setContext("key", {
@@ -26,7 +26,7 @@
   });
 </script>
 
-{#if $isLoading && !$isAuthenticated}
+{#if $isLoading}
   <Loader size="100" />
 {:else}
   <slot />

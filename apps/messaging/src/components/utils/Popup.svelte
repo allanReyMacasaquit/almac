@@ -1,6 +1,7 @@
 <script>
   import { afterUpdate, onMount } from "svelte";
   import clickOutside from "$actions/clickOutside.js";
+  import { logout } from "$api/auth";
   let isOpen = false;
   let openerMenu;
   let popUpBottomPosition;
@@ -47,8 +48,8 @@
           <div
             class="flex-it flex-row items-center justify-center p-2 text-xl text-center transition"
           >
-            <span class="hidden xl:block">Logout</span>
-            <i class="fa fa-sign-out mx-2" aria-hidden="true"></i>
+            <button class="hidden xl:block" on:click={logout}>Logout</button>
+            <i class="fa fa-sign-out mx-2" aria-hidden="true" on:click={logout}></i>
           </div>
         </div>
       </div>
