@@ -9,6 +9,8 @@
   import createFormStore from "$stores/createFormStore";
   import FormErrors from "./FormErrors.svelte";
 
+  export let registerForm;
+
   const { validate, submit, errors, value } = createFormStore({
     fullName: "",
     username: "",
@@ -17,10 +19,6 @@
     password: "",
     passwordConfirmation: ""
   });
-
-  function _submit(formData) {
-    alert(JSON.stringify(formData));
-  }
 </script>
 
 <div class="flex-it justify-center items-center h-full">
@@ -45,14 +43,14 @@
                   type="text"
                   name="fullName"
                   id="fullName"
-                  class="mt-1 p-4 capitalize border rounded-lg block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 p-4 border rounded-lg block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
                 <FormErrors errors={$errors.fullName} />
               </div>
 
               <div class="flex-it py-2">
                 <label for="username" class="block text-sm font-medium text-gray-700">
-                  Nick Name
+                  username
                 </label>
                 <input
                   on:input={value}
@@ -73,7 +71,11 @@
                 <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                 <input
                   on:input={value}
-                  use:validate={[requiredValidator, (ele) => emailValidator(ele)]}
+                  use:validate={[
+                    requiredValidator,
+                    (ele) => emailValidator(ele),
+                    (ele) => minLengthValidator(ele)
+                  ]}
                   type="text"
                   name="email"
                   id="email"
@@ -132,7 +134,7 @@
           </div>
           <div class="flex-it py-2">
             <button
-              on:click={submit(_submit)}
+              on:click={submit(registerForm)}
               type="button"
               class="
               bg-blue-400 hover:bg-blue-500 focus:ring-0

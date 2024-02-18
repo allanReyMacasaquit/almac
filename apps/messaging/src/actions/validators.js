@@ -1,5 +1,3 @@
-import formatString from "$components/utils/format/formatString.js";
-
 export const compareWithValidator = (element, compareToFieldName) => (form) => {
   if (element.value.length === 0) {
     return "";
@@ -9,23 +7,23 @@ export const compareWithValidator = (element, compareToFieldName) => (form) => {
 
   return element.value === compareToValue
     ? ""
-    : `${formatString(element.name)} should be same as ${formatString(compareToFieldName)}`;
+    : `${element.name} should be same as ${compareToFieldName}`;
 };
 
 export const requiredValidator =
   ({ name, value }) =>
   () => {
-    return value.length === 0 ? `${formatString(name)} is required` : "";
+    return value.length === 0 ? `${name} is required` : "";
   };
 
 export const minLengthValidator =
-  (element, minLength = 4) =>
+  (element, minLength = 6) =>
   () => {
     if (element.value.length === 0 || element.value.length > minLength) {
       return "";
     }
 
-    return `${formatString(element.name)} should be more than ${minLength} characters`;
+    return `${element.name} should be more than ${minLength} characters`;
   };
 
 export const maxLengthValidator =
@@ -35,7 +33,7 @@ export const maxLengthValidator =
       return "";
     }
 
-    return `${formatString(element.name)} should be less than ${maxLength} characters`;
+    return `${element.name} should be less than ${maxLength} characters`;
   };
 
 export const emailValidator =
@@ -46,5 +44,5 @@ export const emailValidator =
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(value) ? "" : `${formatString(name)} should be a valid email address`;
+    return emailRegex.test(value) ? "" : `${name} should be a valid email address`;
   };
