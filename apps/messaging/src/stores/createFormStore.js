@@ -32,18 +32,6 @@ function createFormStore(initialData) {
     });
   }
 
-  const submit = (callback) => () => {
-    for (const field in validatorFields) {
-      const config = validatorFields[field];
-
-      checkValidity(config)();
-    }
-
-    if (isValid()) {
-      callback(get(form));
-    }
-  };
-
   const checkValidity =
     ({ element, validators }) =>
     () => {
@@ -64,6 +52,18 @@ function createFormStore(initialData) {
       }
     };
 
+  const submit = (callback) => () => {
+    for (const field in validatorFields) {
+      const config = validatorFields[field];
+
+      checkValidity(config)();
+    }
+
+    if (isValid()) {
+      callback(get(form));
+    }
+  };
+
   return {
     submit,
     validate,
@@ -77,4 +77,5 @@ function createFormStore(initialData) {
     errors: { subscribe: errors.subscribe }
   };
 }
+
 export default createFormStore;

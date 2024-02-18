@@ -14,13 +14,12 @@ export const compareWithValidator = (element, compareToFieldName) => (form) => {
 
 export const requiredValidator =
   ({ name, value }) =>
-  (form) => {
-    console.log(form);
+  () => {
     return value.length === 0 ? `${formatString(name)} is required` : "";
   };
 
 export const minLengthValidator =
-  (element, minLength = 7) =>
+  (element, minLength = 4) =>
   () => {
     if (element.value.length === 0 || element.value.length > minLength) {
       return "";
@@ -30,7 +29,7 @@ export const minLengthValidator =
   };
 
 export const maxLengthValidator =
-  (element, maxLength = 20) =>
+  (element, maxLength = 50) =>
   () => {
     if (element.value.length === 0 || element.value.length < maxLength) {
       return "";
@@ -39,14 +38,13 @@ export const maxLengthValidator =
     return `${formatString(element.name)} should be less than ${maxLength} characters`;
   };
 
-export const firstUppercaseLetter =
+export const emailValidator =
   ({ value, name }) =>
   () => {
     if (value.length === 0) {
       return "";
     }
 
-    return value[0] === value[0].toUpperCase()
-      ? ""
-      : `${formatString(name)} first letter should be uppercased`;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value) ? "" : `${formatString(name)} should be a valid email address`;
   };

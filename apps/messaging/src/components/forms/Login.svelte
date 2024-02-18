@@ -1,10 +1,5 @@
 <script>
-  import {
-    compareWithValidator,
-    firstUppercaseLetter,
-    minLengthValidator,
-    requiredValidator
-  } from "$actions/validators";
+  import { emailValidator, requiredValidator } from "$actions/validators";
   import createFormStore from "$stores/createFormStore";
   import FormErrors from "./FormErrors.svelte";
 
@@ -30,7 +25,7 @@
                 <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                 <input
                   on:input={value}
-                  use:validate={[requiredValidator]}
+                  use:validate={[requiredValidator, (ele) => emailValidator(ele)]}
                   type="email"
                   name="email"
                   id="email"

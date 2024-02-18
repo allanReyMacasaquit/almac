@@ -1,7 +1,7 @@
 <script>
   import {
     compareWithValidator,
-    firstUppercaseLetter,
+    emailValidator,
     maxLengthValidator,
     minLengthValidator,
     requiredValidator
@@ -40,12 +40,12 @@
                   use:validate={[
                     requiredValidator,
                     (ele) => minLengthValidator(ele, 5),
-                    (ele) => maxLengthValidator(ele)
+                    (ele) => maxLengthValidator(ele, 50)
                   ]}
                   type="text"
                   name="fullName"
                   id="fullName"
-                  class="mt-1 p-4 border rounded-lg block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  class="mt-1 p-4 capitalize border rounded-lg block w-full border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
                 <FormErrors errors={$errors.fullName} />
               </div>
@@ -73,11 +73,7 @@
                 <label for="email" class="block text-sm font-medium text-gray-700"> Email </label>
                 <input
                   on:input={value}
-                  use:validate={[
-                    requiredValidator,
-                    (ele) => minLengthValidator(ele, 10),
-                    (ele) => maxLengthValidator(ele, 50)
-                  ]}
+                  use:validate={[requiredValidator, (ele) => emailValidator(ele)]}
                   type="text"
                   name="email"
                   id="email"
@@ -105,11 +101,7 @@
                 </label>
                 <input
                   on:input={value}
-                  use:validate={[
-                    requiredValidator,
-                    (ele) => compareWithValidator(ele, "password"),
-                    (ele) => minLengthValidator(ele, 5)
-                  ]}
+                  use:validate={[requiredValidator, (ele) => minLengthValidator(ele)]}
                   type="password"
                   name="password"
                   id="password"
