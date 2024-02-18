@@ -1,5 +1,5 @@
 import { auth, db } from "$db";
-import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 
 const registerUser = async (form) => {
@@ -7,8 +7,6 @@ const registerUser = async (form) => {
     // Create user in Firebase Authentication
     const userCredential = await createUserWithEmailAndPassword(auth, form.email, form.password);
     const registeredUser = userCredential.user;
-    window.location.reload();
-    // Redirect to the login page
     window.location.href = "/";
 
     // Additional user data
@@ -36,18 +34,24 @@ const registerUser = async (form) => {
   }
 };
 
-function logout() {
-  signOut(auth)
+async function logout() {
+  await signOut(auth)
     .then(() => {
-      // Reload the page after logging out
-      window.location.reload();
-      // Redirect to the login page
       window.location.href = "/login";
-      console.log("User logged out");
     })
     .catch((error) => {
-      // Handle logout error
       console.error("Error logging out:", error);
     });
 }
-export { registerUser, logout };
+async function loginUser(form) {
+  return await signInWithEmailAndPassword(auth, form.email, form.password)
+    .then(() => {
+      window.location.href = "/";
+    })
+    .catch((error) => {
+      // Handle authentication errors here
+      console.error("Authentication failed:", error);
+    });
+}
+
+export { registerUser, logout, loginUser };

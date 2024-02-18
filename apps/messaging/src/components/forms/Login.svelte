@@ -8,9 +8,7 @@
     password: ""
   });
 
-  function _submit(formdata) {
-    alert(JSON.stringify(formdata));
-  }
+  export let _submit;
 </script>
 
 <div class="flex-it justify-center items-center h-full">
