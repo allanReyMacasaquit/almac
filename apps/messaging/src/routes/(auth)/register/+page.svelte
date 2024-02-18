@@ -5,8 +5,11 @@
   async function register(formData) {
     try {
       const user = await registerUser(formData);
+      console.log("User registered successfully:", user);
+      // Add any additional logic here after registering the user
     } catch (error) {
       console.error("Error registering user:", error);
+      // Handle errors, such as displaying error messages to the user
     }
   }
 </script>
