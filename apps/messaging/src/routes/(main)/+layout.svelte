@@ -7,8 +7,10 @@
 
   const { isAuthenticated } = getAuthContext();
 
-  if (!$isAuthenticated) {
-    goto("/login");
+  $: {
+    if (!$isAuthenticated) {
+      goto("/login");
+    }
   }
 </script>
 
