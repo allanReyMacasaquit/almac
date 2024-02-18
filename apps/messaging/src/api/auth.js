@@ -54,4 +54,8 @@ async function loginUser(form) {
     });
 }
 
-export { registerUser, logout, loginUser };
+function authenticate(form, type) {
+  return type === "login" ? loginUser(form) : registerUser(form);
+}
+
+export { authenticate, logout };
