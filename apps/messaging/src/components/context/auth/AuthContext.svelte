@@ -2,13 +2,22 @@
   import Loader from "$components/utils/Loader.svelte";
   import { setContext } from "svelte";
   import { writable } from "svelte/store";
+  import { auth } from "$db";
 
   let isLoading = writable(true);
-  let isAuthenticated = writable(false, (set) => {
-    setTimeout(() => {
-      set(false);
-      isLoading.set(false);
-    }, 500);
+
+  const isAuthenticated = writable(false, (set) => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        set(true);
+        isLoading.set(false);
+      } else {
+        set(false);
+        isLoading.set(true);
+      }
+    });
+
+    return unsubscribe;
   });
 
   setContext("key", {
