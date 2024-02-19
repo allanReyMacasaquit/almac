@@ -1,3 +1,5 @@
 import { getContext } from "svelte";
 
-export const getUIContext = () => getContext("UIkey");
+const getUIContext = () => getContext("UIkey");
+
+export { getUIContext };

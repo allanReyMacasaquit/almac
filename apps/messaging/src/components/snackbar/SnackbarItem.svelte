@@ -2,6 +2,7 @@
   import TiTimesOutline from "svelte-icons/ti/TiTimesOutline.svelte";
 
   const type = "success";
+  export let message;
   let bgColor;
   if (type === "success") {
     bgColor = "bg-blue-800";
@@ -22,6 +23,6 @@
       </div>
     </button>
   </div>
-  <div class="flex-it px-2 pb-3">Hello World</div>
+  <div class="flex-it px-2 pb-3">{message}</div>
   <div style="width: {100}%" class="bg-black opacity-40 text-right h-2"></div>
 </div>
