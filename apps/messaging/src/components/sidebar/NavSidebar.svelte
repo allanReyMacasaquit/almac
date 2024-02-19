@@ -2,6 +2,11 @@
   import TiSocialFlickr from "svelte-icons/ti/TiSocialFlickr.svelte";
   import navLinks from "./navLinks.js";
   import Popup from "$components/utils/Popup.svelte";
+  import { getAuthContext } from "$components/context/auth/index.js";
+
+  const { isAuthenticated } = getAuthContext();
+
+  $: user = $isAuthenticated?.user;
 </script>
 
 <header class="lg:flex-grow flex-it items-end">
@@ -58,11 +63,11 @@
             >
               <div class="flex-it">
                 <div class="w-10 h-10 overflow-visible flex-it justify-center">
-                  <img alt="" class="rounded-full" src="assets/images/user.png" />
+                  <img alt="" class="rounded-full border p-1" src={user?.avatar} />
                 </div>
               </div>
               <div class="flex-it xl:flex hidden flex-grow flex-row justify-between items-center">
-                <div class="flex-it mx-3 font-bold">Allan</div>
+                <div class="flex-it mx-3 font-bold">{user?.username}</div>
                 <div class="flex-it">
                   <div class="icon">
                     <TiSocialFlickr />

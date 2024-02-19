@@ -1,3 +1,5 @@
 import { getContext } from "svelte";
 
-export const getAuthContext = () => getContext("key");
+const getAuthContext = () => getContext("key");
+
+export { getAuthContext };
