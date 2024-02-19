@@ -1,15 +1,17 @@
 <script>
   import TiTimesOutline from "svelte-icons/ti/TiTimesOutline.svelte";
 
-  const type = "success";
   export let message;
+  export let type;
+
   let bgColor;
+
   if (type === "success") {
-    bgColor = "bg-blue-800";
+    bgColor = "bg-blue-600";
   } else if (type === "error") {
-    bgColor = "bg-red-800";
+    bgColor = "bg-red-500";
   } else {
-    bgColor = "bg-yellow-800";
+    bgColor = "bg-yellow-500";
   }
 </script>
 
