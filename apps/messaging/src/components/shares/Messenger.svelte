@@ -14,7 +14,9 @@
 
 <div class="flex-it p-4 flex-row">
   <div class="flex-it mr-4">
-    <div class="w-32 h-32 overflow-visible cursor-pointer transition duration-200 hover:opacity-80">
+    <div
+      class="w-16 h-16 sm:w-32 sm:h-32 overflow-visible cursor-pointer transition duration-200 hover:opacity-80"
+    >
       <img alt="profile" class="rounded-full object-cover border p-1" src={user?.avatar} />
     </div>
   </div>
