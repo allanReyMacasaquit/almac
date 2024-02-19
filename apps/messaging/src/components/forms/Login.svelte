@@ -9,6 +9,7 @@
   });
 
   export let _submit;
+  export let loading;
 </script>
 
 <div class="flex-it justify-center items-center h-full">
@@ -53,6 +54,7 @@
           </div>
           <div class="flex-it py-2">
             <button
+              disabled={loading}
               on:click={submit(_submit)}
               type="button"
               class="

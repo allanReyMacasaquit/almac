@@ -1,10 +1,12 @@
 <script>
-  import { loginUser } from "$api/auth";
   import Login from "$components/forms/Login.svelte";
+  import { createAuthStore } from "$stores/createAuthStore";
+
+  const { authUser, loading } = createAuthStore("login");
 
   async function login(formData) {
     try {
-      const loggedIn = await loginUser(formData);
+      const loggedIn = await authUser(formData);
       console.log(`logged In as ${JSON.stringify(loggedIn.user.email)}`);
     } catch (error) {
       console.log(error);
@@ -12,4 +14,4 @@
   }
 </script>
 
-<Login _submit={login} />
+<Login loading={$loading} _submit={login} />

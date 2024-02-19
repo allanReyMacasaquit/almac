@@ -1,17 +1,16 @@
 <script>
-  import { registerUser } from "$api/auth";
   import Register from "$components/forms/Register.svelte";
+  import { createAuthStore } from "$stores/createAuthStore";
 
+  const { authUser, loading } = createAuthStore("register");
   async function register(formData) {
     try {
-      const user = await registerUser(formData);
+      const user = await authUser(formData);
       console.log("User registered successfully:", user);
-      // Add any additional logic here after registering the user
     } catch (error) {
       console.error("Error registering user:", error);
-      // Handle errors, such as displaying error messages to the user
     }
   }
 </script>
 
-<Register registerForm={register} />
+<Register loading={$loading} registerForm={register} />

@@ -1,13 +1,22 @@
 import { authenticate } from "$api/auth";
+import { writable } from "svelte/store";
 
 export function createAuthStore(authType) {
+  let loading = writable(false);
+
   async function authUser(form) {
-    const firebaseUser = await authenticate(form, authType);
-    console.log(firebaseUser);
-    return firebaseUser;
+    loading.set(true);
+
+    try {
+      await authenticate(form, authType);
+    } catch (error) {
+      loading.set(false);
+      console.log(error.message);
+    }
   }
 
   return {
-    authUser
+    authUser,
+    loading: { subscribe: loading.subscribe }
   };
 }
