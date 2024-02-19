@@ -7,9 +7,8 @@
     email: "",
     password: ""
   });
-
-  export let _submit;
-  export let loading;
+  export let loginForm;
+  export let loginFormLoading;
 </script>
 
 <div class="flex-it justify-center items-center h-full">
@@ -54,8 +53,8 @@
           </div>
           <div class="flex-it py-2">
             <button
-              disabled={loading}
-              on:click={submit(_submit)}
+              disabled={loginFormLoading}
+              on:click={submit(loginForm)}
               type="button"
               class="
               bg-blue-400 hover:bg-blue-500

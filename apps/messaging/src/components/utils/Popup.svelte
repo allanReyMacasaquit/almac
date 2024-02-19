@@ -1,7 +1,7 @@
 <script>
   import { afterUpdate, onMount } from "svelte";
   import clickOutside from "$actions/clickOutside.js";
-  import { logout } from "$api/auth";
+  import { logoutUser } from "$api/auth";
   let isOpen = false;
   let openerMenu;
   let popUpBottomPosition;
@@ -24,6 +24,10 @@
   }
   function isPopupClicked(targetEl) {
     return popup.contains(targetEl);
+  }
+
+  async function logout() {
+    await logoutUser();
   }
 </script>
 

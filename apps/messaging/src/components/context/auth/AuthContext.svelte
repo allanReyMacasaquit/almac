@@ -1,4 +1,5 @@
 <script>
+  import { getUser } from "$api/users";
   import Loader from "$components/utils/Loader.svelte";
   import { auth } from "$db";
   import { onAuthStateChanged } from "firebase/auth";
@@ -6,19 +7,23 @@
   import { writable } from "svelte/store";
 
   let isLoading = writable(true);
-  let isAuthenticated = writable(false);
+  let isAuthenticated = writable({ isAuthentic: false, user: null });
 
-  onMount(() => {
-    onAuthStateChanged(auth, (user) => {
+  onMount(onChanged);
+
+  function onChanged() {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
-        isAuthenticated.set(true);
+        const authenticUser = await getUser(user.uid);
+        // console.log(authenticUser);
+        isAuthenticated.set({ isAuthentic: true, user: authenticUser });
       } else {
-        isAuthenticated.set(false);
+        isAuthenticated.set({ isAuthentic: false, user: null });
       }
 
       isLoading.set(false);
     });
-  });
+  }
 
   setContext("key", {
     isAuthenticated,

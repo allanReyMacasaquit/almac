@@ -10,7 +10,7 @@
   import FormErrors from "./FormErrors.svelte";
 
   export let registerForm;
-  export let loading;
+  export let registerFormLoading;
 
   const { validate, submit, errors, value } = createFormStore({
     fullName: "",
@@ -135,7 +135,7 @@
           </div>
           <div class="flex-it py-2">
             <button
-              disabled={loading}
+              disabled={registerFormLoading}
               on:click={submit(registerForm)}
               type="button"
               class="

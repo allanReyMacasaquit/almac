@@ -4,13 +4,8 @@
 
   const { authUser, loading } = createAuthStore("register");
   async function register(formData) {
-    try {
-      const user = await authUser(formData);
-      console.log("User registered successfully:", user);
-    } catch (error) {
-      console.error("Error registering user:", error);
-    }
+    await authUser(formData);
   }
 </script>
 
-<Register loading={$loading} registerForm={register} />
+<Register registerFormLoading={$loading} registerForm={register} />

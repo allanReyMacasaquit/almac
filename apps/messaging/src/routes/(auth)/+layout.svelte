@@ -5,12 +5,12 @@
   const { isAuthenticated } = getAuthContext();
 
   $: {
-    if ($isAuthenticated) {
+    if ($isAuthenticated.isAuthentic) {
       goto("/");
     }
   }
 </script>
 
-{#if !$isAuthenticated}
+{#if !$isAuthenticated.isAuthentic}
   <slot />
 {/if}

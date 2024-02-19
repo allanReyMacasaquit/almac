@@ -8,13 +8,13 @@
   const { isAuthenticated } = getAuthContext();
 
   $: {
-    if (!$isAuthenticated) {
+    if (!$isAuthenticated.isAuthentic) {
       goto("/login");
     }
   }
 </script>
 
-{#if $isAuthenticated}
+{#if $isAuthenticated.isAuthentic}
   <MainLayout trends={data.trends}>
     <slot />
   </MainLayout>
