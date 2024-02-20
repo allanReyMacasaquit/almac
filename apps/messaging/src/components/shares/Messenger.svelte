@@ -1,13 +1,16 @@
 <script>
   import { getAuthContext } from "$components/context/auth";
+  import { getUIContext } from "$components/context/ui";
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
 
   const { isAuthenticated } = getAuthContext();
+  const { addSnackbar } = getUIContext();
 
   let shareContent = "";
   $: user = $isAuthenticated?.user;
 
   function createShare() {
+    addSnackbar("Successfully created", "success");
     console.log("Should create a new glide!");
   }
 </script>
