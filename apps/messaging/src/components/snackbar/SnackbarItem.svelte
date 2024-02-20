@@ -1,6 +1,6 @@
 <script>
   import { onMount, onDestroy } from "svelte";
-  import TiTimesOutline from "svelte-icons/ti/TiTimesOutline.svelte";
+  import TiTimes from "svelte-icons/ti/TiTimes.svelte";
   import { fly } from "svelte/transition";
 
   const INTERVAL_STEP = 5.0;
@@ -50,11 +50,11 @@
   out:fly={{ x: 200 }}
   class="{bgColor} min-w-68 text-white flex-it font-bold sm:rounded-md md:max-w-xs w-full text-sm sm:text-lg sm:shadow-md"
 >
-  <div class="flex-it flex-row justify-between items-center p-4">
-    <div class="flex-it px-4">{message}</div>
+  <div class="flex-it flex-row justify-between items-center p-6">
+    <div class="flex-it px-4 w-full">{message}</div>
     <button on:click={onClose} class="text-xl rounded-full">
       <div class="icon">
-        <TiTimesOutline />
+        <TiTimes />
       </div>
     </button>
   </div>

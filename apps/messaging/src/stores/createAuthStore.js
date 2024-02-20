@@ -1,7 +1,9 @@
 import { authenticate } from "$api/auth";
+import { getUIContext } from "$components/context/ui";
 import { writable } from "svelte/store";
 
 export function createAuthStore(authType) {
+  const { addSnackbar } = getUIContext();
   let loading = writable(false);
 
   async function authUser(form) {
@@ -9,9 +11,11 @@ export function createAuthStore(authType) {
 
     try {
       await authenticate(form, authType);
+      addSnackbar("Welcome", "success");
     } catch (error) {
       loading.set(false);
-      console.log(error.message);
+      addSnackbar(error.message, "error");
+      // console.log(error.message);
     }
   }
 

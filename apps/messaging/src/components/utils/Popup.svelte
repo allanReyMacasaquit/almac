@@ -47,16 +47,16 @@
       style="bottom: {popUpBottomPosition};"
       class="flex-it hover:cursor-pointer fixed bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white popup z-10 rounded-2xl border-gray-700 border transition duration-1000"
     >
-      <div class="xl:w-72 xl:min-w-68 max-h-120 min-h-8 flex-it overflow-auto">
+      <button on:click={logout} class="xl:w-72 xl:min-w-68 max-h-120 min-h-8 flex-it overflow-auto">
         <div class="flex-it flex-grow flex-shrink py-">
           <div
             class="flex-it flex-row items-center justify-center p-2 text-xl text-center transition"
           >
-            <button class="hidden xl:block" on:click={logout}>Logout</button>
+            <div class="hidden xl:block">Logout</div>
             <i class="fa fa-sign-out mx-2" aria-hidden="true" on:click={logout}></i>
           </div>
         </div>
-      </div>
+      </button>
     </div>
   {/if}
 </div>
