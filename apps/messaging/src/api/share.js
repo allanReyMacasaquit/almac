@@ -15,4 +15,9 @@ async function createShareApi(shareData) {
   const data = { ...share, id: docId.id };
   return data;
 }
-export { createShareApi };
+
+function fetchSharesCollection() {
+  console.log("fetching!!!");
+}
+
+export { createShareApi, fetchSharesCollection };

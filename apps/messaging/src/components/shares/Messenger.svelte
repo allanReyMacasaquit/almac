@@ -51,9 +51,6 @@
   <!-- MESSENGER START -->
   <div class="flex-it flex-grow">
     <div class="flex-it">
-      <div>
-        {loading}
-      </div>
       <textarea
         bind:value={form.content}
         name="content"
