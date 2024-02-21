@@ -60,7 +60,11 @@ function createFormStore(initialData) {
     }
 
     if (isValid()) {
-      callback(get(form));
+      try {
+        callback(get(form));
+      } catch (error) {
+        console.log(error.errorMessage);
+      }
     }
   };
 

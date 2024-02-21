@@ -6,12 +6,32 @@
   const { isAuthenticated } = getAuthContext();
   const { addSnackbar } = getUIContext();
 
-  let shareContent = "";
+  export let onAddShare;
+
+  let form = { content: "" };
+  let loading = false;
+
   $: user = $isAuthenticated?.user;
 
-  function createShare() {
+  async function createShare() {
+    loading = true;
+
+    const share = {
+      ...form,
+      uid: user.uid
+    };
+
+    await new Promise((res) => {
+      setTimeout(() => {
+        res(true);
+      }, 1000);
+    });
+
+    onAddShare(share);
     addSnackbar("Successfully created", "success");
-    console.log("Should create a new glide!");
+
+    loading = false;
+    form.content = "";
   }
 </script>
 
@@ -27,8 +47,11 @@
   <!-- MESSENGER START -->
   <div class="flex-it flex-grow">
     <div class="flex-it">
+      <div>
+        {loading}
+      </div>
       <textarea
-        bind:value={shareContent}
+        bind:value={form.content}
         name="content"
         rows="3"
         id="glide"
