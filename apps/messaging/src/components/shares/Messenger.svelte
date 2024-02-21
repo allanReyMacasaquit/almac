@@ -1,4 +1,5 @@
 <script>
+  import { createShareApi } from "$api/share";
   import { getAuthContext } from "$components/context/auth";
   import { getUIContext } from "$components/context/ui";
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
@@ -13,21 +14,22 @@
 
   $: user = $isAuthenticated?.user;
 
-  async function createShare() {
+  async function submitShare() {
     loading = true;
 
-    const share = {
+    const shareData = {
       ...form,
       uid: user.uid
     };
 
     await new Promise((res) => {
       setTimeout(() => {
+        createShareApi(shareData);
         res(true);
       }, 1000);
     });
 
-    onAddShare(share);
+    onAddShare(shareData);
     addSnackbar("Successfully created", "success");
 
     loading = false;
@@ -71,7 +73,7 @@
       </div>
       <div class="flex-it w-32 mt-3 cursor-pointer">
         <button
-          on:click={createShare}
+          on:click={submitShare}
           type="button"
           class="disabled:cursor-not-allowed disabled:bg-gray-400 bg-blue-800 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full flex-it transition duration-200"
         >
