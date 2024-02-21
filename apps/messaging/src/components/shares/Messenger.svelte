@@ -22,18 +22,21 @@
       uid: user.uid
     };
 
-    await new Promise((res) => {
-      setTimeout(() => {
-        createShareApi(shareData);
-        res(true);
-      }, 1000);
-    });
-
-    onAddShare(shareData);
-    addSnackbar("Successfully created", "success");
-
-    loading = false;
-    form.content = "";
+    try {
+      await new Promise((res) => {
+        setTimeout(() => {
+          createShareApi(shareData);
+          onAddShare(shareData);
+          addSnackbar("message created successfully", "success");
+          form.content = "";
+          res(true);
+        }, 1000);
+      });
+    } catch (error) {
+      addSnackbar(error.message, "error");
+    } finally {
+      loading = false;
+    }
   }
 </script>
 
