@@ -1,7 +1,7 @@
 import { db } from "$db";
-import { Timestamp, doc } from "firebase/firestore";
+import { Timestamp, addDoc, collection, doc } from "firebase/firestore";
 
-function createShareApi(shareData) {
+async function createShareApi(shareData) {
   const userRef = doc(db, "users", shareData.uid);
   const share = {
     ...shareData,
@@ -10,7 +10,9 @@ function createShareApi(shareData) {
     likesCount: 0,
     subShareCount: 0
   };
-  console.log(share);
+  const shareCollection = collection(db, "shares");
+  await addDoc(shareCollection, share);
+
   return share;
 }
 export { createShareApi };

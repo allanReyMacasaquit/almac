@@ -27,7 +27,7 @@
         setTimeout(() => {
           createShareApi(shareData);
           onAddShare(shareData);
-          addSnackbar("message created successfully", "success");
+          addSnackbar("Message submitted ", "success");
           form.content = "";
           res(true);
         }, 1000);
