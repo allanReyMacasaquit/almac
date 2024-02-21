@@ -4,7 +4,7 @@ export function createShareStore() {
   const shares = writable([]);
 
   function addShare(share) {
-    console.log("Adding message: " + JSON.stringify(share));
+    shares.update((list) => [share, ...list]);
   }
 
   return {

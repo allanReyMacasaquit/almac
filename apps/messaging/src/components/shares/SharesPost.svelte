@@ -2,6 +2,7 @@
   import TiHeartOutline from "svelte-icons/ti/TiHeartOutline.svelte";
   import TiMessage from "svelte-icons/ti/TiMessage.svelte";
   import TiTrash from "svelte-icons/ti/TiTrash.svelte";
+  import moment from "moment";
 
   export let share;
 </script>
@@ -27,7 +28,7 @@
           <div>
             <span class="text-slate-400 capitalize text-2xl">{share.user.username}</span>
             <span class="mx-2">&#8226;</span>
-            <span class="text-gray-400">2h</span>
+            <span class="text-gray-400">{moment(share.date.toDate().toISOString()).fromNow()}</span>
           </div>
           <div class="text-gray-400 cursor-pointer transition hover:text-red-400">
             <div class="icon">
@@ -50,7 +51,7 @@
           <div class="icon">
             <TiMessage />
           </div>
-          <span class="text-xs ml-3">{share.subSharesCount}</span>
+          <span class="text-xs ml-3">{share.subShareCount}</span>
         </div>
 
         <div class="flex-it flex-row items-center cursor-pointer transition hover:text-pink-400">

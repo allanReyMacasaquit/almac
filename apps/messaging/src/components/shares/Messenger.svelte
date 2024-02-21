@@ -23,17 +23,16 @@
     };
 
     try {
-      await new Promise((res) => {
-        setTimeout(() => {
-          createShareApi(shareData);
-          onAddShare(shareData);
-          addSnackbar("Message submitted ", "success");
-          form.content = "";
-          res(true);
-        }, 1000);
-      });
-    } catch (error) {
-      addSnackbar(error.message, "error");
+      const share = await createShareApi(shareData);
+      const userData = {
+        username: user.username,
+        avatar: user.avatar
+      };
+      onAddShare({ ...share, user: userData });
+      addSnackbar("Message Created!", "success");
+      form.content = "";
+    } catch (e) {
+      addSnackbar(e.message, "error");
     } finally {
       loading = false;
     }

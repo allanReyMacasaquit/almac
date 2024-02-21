@@ -11,8 +11,8 @@ async function createShareApi(shareData) {
     subShareCount: 0
   };
   const shareCollection = collection(db, "shares");
-  await addDoc(shareCollection, share);
-
-  return share;
+  const docId = await addDoc(shareCollection, share);
+  const data = { ...share, id: docId.id };
+  return data;
 }
 export { createShareApi };
