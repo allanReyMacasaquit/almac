@@ -24,10 +24,12 @@ export function createShareStore() {
     try {
       const sharesLoad = await fetchSharesCollection();
       if (sharesLoad.length > 0) {
-        sharesPages.update((pages) => ({ ...pages, [page]: { sharesLoad } }));
+        sharesPages.update((pages) => {
+          const existingShares = pages[page].shares;
+          return { ...pages, [page]: { shares: [...existingShares, ...sharesLoad] } };
+        });
         console.log(get(sharesPages));
       }
-      // sharesPages.set(sharesLoad);
     } catch (error) {
       console.log(error.message);
     } finally {
