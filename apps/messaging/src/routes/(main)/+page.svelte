@@ -2,6 +2,7 @@
   import Messenger from "$components/shares/Messenger.svelte";
   import SharesPost from "$components/shares/SharesPost.svelte";
   import CenteredDataLoader from "$components/utils/CenteredDataLoader.svelte";
+  import PaginatedSharesPages from "$components/utils/PaginatedSharesPages.svelte";
   import { createShareStore } from "$stores/createShareStore";
 
   const { sharesPages, addShare, loading } = createShareStore();
@@ -10,11 +11,7 @@
 <Messenger onAddShare={addShare} />
 <div class="h-px bg-gray-700 my-1" />
 
-{#each Object.keys($sharesPages) as page}
-  {#each $sharesPages[page].shares as share (share.id)}
-    <SharesPost {share} />
-  {/each}
-{/each}
+<PaginatedSharesPages {sharesPages} />
 
 {#if $loading}
   <CenteredDataLoader />

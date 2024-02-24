@@ -10,7 +10,10 @@ export function createShareStore() {
   const loading = writable(false);
 
   function addShare(share) {
-    // sharesPages.update((list) => [share, ...list]);
+    sharesPages.update((page) => {
+      page[FIRST_PAGE].shares.unshift(share);
+      return page;
+    });
     console.log(share);
   }
 
@@ -38,7 +41,7 @@ export function createShareStore() {
   }
 
   return {
-    sharesPages: { subscribe: sharesPages.subscribe },
+    sharesPages,
     loading: { subscribe: loading.subscribe },
     addShare
   };
