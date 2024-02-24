@@ -1,22 +1,33 @@
 import { fetchSharesCollection } from "$api/share";
 import { onMount } from "svelte";
-import { writable } from "svelte/store";
+import { get, writable } from "svelte/store";
+
+const FIRST_PAGE = 1;
 
 export function createShareStore() {
-  const shares = writable([]);
+  const sharesPages = writable({ [FIRST_PAGE]: { shares: [] } });
+  const sharesPage = writable(FIRST_PAGE);
   const loading = writable(false);
 
   function addShare(share) {
-    shares.update((list) => [share, ...list]);
+    // sharesPages.update((list) => [share, ...list]);
+    console.log(share);
   }
 
   onMount(loadSharedData);
 
   async function loadSharedData() {
+    const page = get(sharesPage);
+    console.log("loading page" + page);
+
     loading.set(true);
     try {
       const sharesLoad = await fetchSharesCollection();
-      shares.set(sharesLoad);
+      if (sharesLoad.length > 0) {
+        sharesPages.update((pages) => ({ ...pages, [page]: { sharesLoad } }));
+        console.log(get(sharesPages));
+      }
+      // sharesPages.set(sharesLoad);
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -25,7 +36,7 @@ export function createShareStore() {
   }
 
   return {
-    shares: { subscribe: shares.subscribe },
+    sharesPages: { subscribe: sharesPages.subscribe },
     loading: { subscribe: loading.subscribe },
     addShare
   };

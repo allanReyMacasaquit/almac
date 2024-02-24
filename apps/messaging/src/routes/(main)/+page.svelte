@@ -10,9 +10,9 @@
 <Messenger onAddShare={addShare} />
 <div class="h-px bg-gray-700 my-1" />
 
-{#each $shares as share (share.id)}
+<!-- {#each $shares as share (share.id)}
   <SharesPost {share} />
-{/each}
+{/each} -->
 
 {#if $loading}
   <CenteredDataLoader />
